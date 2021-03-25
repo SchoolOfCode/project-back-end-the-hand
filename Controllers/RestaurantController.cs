@@ -6,9 +6,6 @@ using System.Web;
 using System.Collections.Specialized;
 using Microsoft.AspNetCore.Http;
 
-
-namespace server.Controllers
-{
     [ApiController]
     [Route("restaurants")]
     public class RestaurantController : ControllerBase
@@ -66,21 +63,22 @@ namespace server.Controllers
     {
         try{
             var updatedRestaurant = await _restaurantRepository.Update(new Restaurant { 
-                RestaurantName
-                Description
-                OpeningTimes
-                ClosingTimes
-                PhoneNumber
-                AddressLine1
-                Area
-                Postcode
-                WebsiteURL
-                PhotoURL
-                Capacity
-                Tables2
-                Tables4
-                Tables6
-                Tables8 
+                Id = id,
+                RestaurantName = restaurant.RestaurantName,
+                Description = restaurant.Description,
+                OpeningTimes = restaurant.OpeningTimes,
+                ClosingTimes = restaurant.ClosingTimes,
+                PhoneNumber = restaurant.PhoneNumber,
+                AddressLine1 = restaurant.AddressLine1,
+                Area = restaurant.Area,
+                Postcode = restaurant.Postcode,
+                WebsiteURL = restaurant.WebsiteURL,
+                PhotoURL = restaurant.PhotoURL,
+                Capacity = restaurant.Capacity,
+                Tables2 = restaurant.Tables2,
+                Tables4 = restaurant.Tables4,
+                Tables6 = restaurant.Tables6,
+                Tables8 = restaurant.Tables8
             });
             return Ok(updatedRestaurant);
         }
@@ -100,5 +98,5 @@ namespace server.Controllers
         var newRestaurant = await _restaurantRepository.Insert(restaurant);
         return Created($"/restaurants/{restaurant.Id}", newRestaurant);
     }
-    }
 }
+
