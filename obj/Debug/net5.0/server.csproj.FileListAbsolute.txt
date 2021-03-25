@@ -27,3 +27,5 @@ D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\server
 D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\ref\server.dll
 D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\server.pdb
 D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\server.genruntimeconfig.cache
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Dapper.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Npgsql.dll
