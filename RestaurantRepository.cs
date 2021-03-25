@@ -31,7 +31,7 @@ public class RestaurantRepository : BaseRepository, IRepository<Restaurant>
     public void Delete(int id)
     {
         using var connection = CreateConnection();
-        return await connection.Execute("DELETE * FROM restaurant_capacity_view WHERE Id = @Id", new { Id = id });
+        connection.Execute("DELETE * FROM restaurant_capacity_view WHERE Id = @Id", new { Id = id });
     }
 
     public async Task<Restaurant> Update(Restaurant restaurant)
