@@ -287,19 +287,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sharm\\.nuget\\packages\\": {}
+    "C:\\Users\\oana_\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sharm\\Documents\\School of Code\\week12\\project-back-end-the-hand\\server.csproj",
+      "projectUniqueName": "D:\\github.com\\OanaMG\\School of Code\\final_project\\server\\server.csproj",
       "projectName": "server",
-      "projectPath": "C:\\Users\\sharm\\Documents\\School of Code\\week12\\project-back-end-the-hand\\server.csproj",
-      "packagesPath": "C:\\Users\\sharm\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sharm\\Documents\\School of Code\\week12\\project-back-end-the-hand\\obj\\",
+      "projectPath": "D:\\github.com\\OanaMG\\School of Code\\final_project\\server\\server.csproj",
+      "packagesPath": "C:\\Users\\oana_\\.nuget\\packages\\",
+      "outputPath": "D:\\github.com\\OanaMG\\School of Code\\final_project\\server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sharm\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\oana_\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net5.0"
@@ -354,7 +354,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
       }
     }
   }

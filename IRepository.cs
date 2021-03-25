@@ -8,5 +8,5 @@ public interface IRepository<T>
     Task<T> Get(int id);
     Task<T> Insert (T t);
     Task<T> Update (T t);
-    void Delete(long id);
+    void Delete(int id);
 }

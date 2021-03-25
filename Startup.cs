@@ -12,8 +12,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace server
-{
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -65,4 +64,4 @@ namespace server
             });
         }
     }
-}
+

@@ -53,7 +53,7 @@ using Microsoft.AspNetCore.Http;
     }
 
     [HttpDelete("{id}")]
-    public void Delete(long id)
+    public void Delete(int id)
     {
         _restaurantRepository.Delete(id);
     }

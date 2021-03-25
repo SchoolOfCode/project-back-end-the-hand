@@ -7,8 +7,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace server
-{
     public class Program
     {
         public static void Main(string[] args)
@@ -23,4 +21,4 @@ namespace server
                     webBuilder.UseStartup<Startup>();
                 });
     }
-}
+
