@@ -1,0 +1,40 @@
+CREATE TABLE restaurant_capacity_view (
+    Id SERIAL PRIMARY KEY,
+    RestaurantName TEXT,
+    Description TEXT,
+    OpeningTimes VARCHAR,
+    ClosingTimes VARCHAR,
+    PhoneNumber NUMERIC,
+    AddressLine1 VARCHAR,
+    Area TEXT,
+    Postcode VARCHAR,
+    WebsiteURL TEXT,
+    PhotoURl TEXT,
+    AdditionalInfo TEXT,
+    Capacity NUMERIC,
+    Tables2 NUMERIC,
+    Tables4 NUMERIC,
+    Tables6 NUMERIC,
+    Tables8 NUMERIC
+);
+
+INSERT INTO restaurant_capacity_view (
+    RestaurantName,
+    Description,
+    OpeningTimes ,
+    ClosingTimes ,
+    PhoneNumber,
+    AddressLine1 ,
+    Area,
+    Postcode ,
+    WebsiteURL,
+    PhotoURl,
+    AdditionalInfo,
+    Capacity,
+    Tables2,
+    Tables4,
+    Tables6,
+    Tables8) 
+    VALUES 
+    ('Testcase',	'We serve good food. We also serve drinks. We are not Michlien starred.',	'1200',	'2300',	01211313131,	'1 Testcase Street',	'Edgbaston',	'B25 8TC',	'www.testfood.co.uk',	'https://source.unsplash.com/random/400x400',	'Glutenfree available',	80,	10,	6,	5,	2),
+    ('Testcase2',	'Greatest world buffet ever!',	'1600',	'2330',	01211245631,	'2 Testcase Street',	'Walsall',	'WS29PS',	'www.testcase2.food',	'https://source.unsplash.com/random/800x600',	'Caters for vegetarians and vegans',	160,	19,	12,	9,	5);
