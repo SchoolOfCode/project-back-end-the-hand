@@ -13,29 +13,92 @@ namespace server.Controllers
     [Route("restaurants")]
     public class RestaurantController : ControllerBase
     {
-       private readonly IRepository<Book> _bookRepository;
+       private readonly IRepository<Restaurant> _restaurantRepository;
 
         public RestaurantController(IRepository<Restaurant> restaurantRepository)
         {
-        _   restaurantRepository = restaurantRepository;
+            _restaurantRepository = restaurantRepository;
         }
     
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+
+    [HttpGet]
+    public async Task<IActionResult> GetAll([FromQuery] string search)
         {
-            _logger = logger;
+            if (!String.IsNullOrEmpty(search)){
+                try {
+                    var restaurantList = await _restaurantRepository.GetSearch(search);
+                    return Ok(restaurantList);
+                }
+                catch (Exception){
+                    return NotFound($"There are no restaurants which match that search");
+                }
+            } else {
+                try {
+                    var restaurantList = await _restaurantRepository.GetAll();
+                    return Ok(restaurantList);
+                }
+                catch (Exception){
+                    return NotFound($"There are no restaurants listed");
+                }
+            }
         }
 
-        [HttpGet]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            var rng = new Random();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateTime.Now.AddDays(index),
-                TemperatureC = rng.Next(-20, 55),
-                Summary = Summaries[rng.Next(Summaries.Length)]
-            })
-            .ToArray();
+    [HttpGet("{id}")]
+    public async Task<IActionResult> Get(int id)  
+    {
+        try {
+            var restaurant = await _restaurantRepository.Get(id);
+            return Ok(restaurant);
         }
+        catch (Exception){
+            return NotFound($"There is no restaurant with id {id}");
+        }
+    }
+
+    [HttpDelete("{id}")]
+    public void Delete(long id)
+    {
+        _restaurantRepository.Delete(id);
+    }
+
+    [HttpPut("{id}")]
+    public async Task<IActionResult> Update(int id, [FromBody] Restaurant restaurant) 
+    {
+        try{
+            var updatedRestaurant = await _restaurantRepository.Update(new Restaurant { 
+                RestaurantName
+                Description
+                OpeningTimes
+                ClosingTimes
+                PhoneNumber
+                AddressLine1
+                Area
+                Postcode
+                WebsiteURL
+                PhotoURL
+                Capacity
+                Tables2
+                Tables4
+                Tables6
+                Tables8 
+            });
+            return Ok(updatedRestaurant);
+        }
+        catch (Exception) {         
+            return BadRequest();
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> Insert([FromBody] Restaurant restaurant)    
+    {
+       
+        if(!ModelState.IsValid){
+            return BadRequest(ModelState);
+        }
+
+        var newRestaurant = await _restaurantRepository.Insert(restaurant);
+        return Created($"/restaurants/{restaurant.Id}", newRestaurant);
+    }
     }
 }
