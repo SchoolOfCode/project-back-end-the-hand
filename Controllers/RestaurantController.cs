@@ -61,28 +61,13 @@ using Microsoft.AspNetCore.Http;
     [HttpPut("{id}")]
     public async Task<IActionResult> Update(int id, [FromBody] Restaurant restaurant) 
     {
-        try{
-            var updatedRestaurant = await _restaurantRepository.Update(new Restaurant { 
-                Id = id,
-                RestaurantName = restaurant.RestaurantName,
-                Description = restaurant.Description,
-                OpeningTimes = restaurant.OpeningTimes,
-                ClosingTimes = restaurant.ClosingTimes,
-                PhoneNumber = restaurant.PhoneNumber,
-                AddressLine1 = restaurant.AddressLine1,
-                Area = restaurant.Area,
-                Postcode = restaurant.Postcode,
-                WebsiteURL = restaurant.WebsiteURL,
-                PhotoURL = restaurant.PhotoURL,
-                Capacity = restaurant.Capacity,
-                Tables2 = restaurant.Tables2,
-                Tables4 = restaurant.Tables4,
-                Tables6 = restaurant.Tables6,
-                Tables8 = restaurant.Tables8
-            });
-            return Ok(updatedRestaurant);
+        try 
+        {
+            restaurant.Id = id;
+            return Ok(await _restaurantRepository.Update(restaurant));
         }
-        catch (Exception) {         
+        catch (Exception) 
+        {         
             return BadRequest();
         }
     }
