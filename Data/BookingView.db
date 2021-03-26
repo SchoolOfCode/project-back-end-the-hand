@@ -1,0 +1,10 @@
+CREATE TABLE bookingview (
+BookingId SERIAL PRIMARY KEY,
+RestaurantId INTEGER REFERENCES restaurant_capacity_view (Id),
+CustomerName TEXT,
+BookingDate VARCHAR,
+BookingTime VARCHAR,
+NumberOfPeople NUMERIC,
+CustomerMobile VARCHAR ,
+CustomerEmail VARCHAR,
+);
