@@ -10,24 +10,24 @@ using Microsoft.AspNetCore.Http;
     [Route("bookings")]
     public class BookingController : ControllerBase
     {
-       private readonly IRepository<Booking> _bookingRepository;
+       private readonly IRepositoryB<Booking> _bookingRepository;
 
-        public BookingController(IRepository<Booking> bookingRepository)
+        public BookingController(IRepositoryB<Booking> bookingRepository)
         {
             _bookingRepository = bookingRepository;
         }
     
-
+    //get bookings by restaurant id and date - working
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] string search)
+    public async Task<IActionResult> GetAll([FromQuery] int restaurantId, string date)
         {
-            if (!String.IsNullOrEmpty(search)){
+            if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date)){
                 try {
-                    var bookingList = await _bookingRepository.GetSearch(search);
+                    var bookingList = await _bookingRepository.GetByRestaurantAndDate(restaurantId, date);
                     return Ok(bookingList);
                 }
                 catch (Exception){
-                    return NotFound($"There are no bookings which match that search");
+                    return NotFound($"There are no bookings for restaurant {restaurantId} for the date {date}");
                 }
             } else {
                 try {
@@ -40,15 +40,16 @@ using Microsoft.AspNetCore.Http;
             }
         }
 
+    //get bookings by restaurant id - working
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)  
     {
         try {
-            var booking = await _bookingRepository.Get(id);
+            var booking = await _bookingRepository.GetByRestaurant(id);
             return Ok(booking);
         }
         catch (Exception){
-            return NotFound($"There is no booking with id {id}");
+            return NotFound($"There are no bookings for restaurant {id}");
         }
     }
 
@@ -75,13 +76,15 @@ using Microsoft.AspNetCore.Http;
     [HttpPost]
     public async Task<IActionResult> Insert([FromBody] Booking booking)    
     {
-       
-        if(!ModelState.IsValid){
-            return BadRequest(ModelState);
+        try 
+        {
+             var newBooking = await _bookingRepository.Insert(booking);
+            return Created($"/bookings/{booking.BookingId}", newBooking);
         }
-
-        var newBooking = await _bookingRepository.Insert(booking);
-        return Created($"/bookings/{booking.BookingId}", newBooking);
+        catch (Exception) 
+        {         
+            return BadRequest();
+        }
     }
 }
 

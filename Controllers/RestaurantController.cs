@@ -17,17 +17,17 @@ using Microsoft.AspNetCore.Http;
             _restaurantRepository = restaurantRepository;
         }
     
-
+    //get restaurants by cuisine - working
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] string search)
+    public async Task<IActionResult> GetAll([FromQuery] string cuisine)
         {
-            if (!String.IsNullOrEmpty(search)){
+            if (!String.IsNullOrEmpty(cuisine)){
                 try {
-                    var restaurantList = await _restaurantRepository.GetSearch(search);
+                    var restaurantList = await _restaurantRepository.GetSearch(cuisine);
                     return Ok(restaurantList);
                 }
                 catch (Exception){
-                    return NotFound($"There are no restaurants which match that search");
+                    return NotFound($"There are no restaurants that match the {cuisine} cuisine");
                 }
             } else {
                 try {
@@ -40,6 +40,7 @@ using Microsoft.AspNetCore.Http;
             }
         }
 
+    //get restaurant by id - working
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)  
     {
