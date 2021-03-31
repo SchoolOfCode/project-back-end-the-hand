@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
 
-public class BookingRepository : BaseRepository, IRepository<Booking>
+public class BookingRepository : BaseRepository, IRepositoryB<Booking>
 {
     public BookingRepository(IConfiguration configuration) : base(configuration) { }
 
@@ -14,18 +14,19 @@ public class BookingRepository : BaseRepository, IRepository<Booking>
         return await bookings;
     }
 
-    public async Task<IEnumerable<Booking>> GetSearch(string search)
+    public async Task<IEnumerable<Booking>> GetByRestaurantAndDate(int restaurantId, string date)
     {
         using var connection = CreateConnection();
-        Task<IEnumerable<Booking>> bookings = connection.QueryAsync<Booking>("SELECT * FROM bookingview WHERE BookingDate ILIKE @Search;", new { Search = $"{search}" });
+        Task<IEnumerable<Booking>> bookings = connection.QueryAsync<Booking>("SELECT * FROM bookingview WHERE RestaurantId =@RestaurantId AND BookingDate ILIKE @Date;", new { RestaurantId = restaurantId, Date = $"{date}%" });
 
         return await bookings;
     }
 
-    public async Task<Booking> Get(int id)
+    public async Task<IEnumerable<Booking>> GetByRestaurant(int restaurantId)
     {
         using var connection = CreateConnection();
-        return await connection.QuerySingleAsync<Booking>("SELECT * FROM bookingview WHERE BookingId = @BookingId;", new { BookingId = id });
+        Task<IEnumerable<Booking>> bookings = connection.QueryAsync<Booking>("SELECT * FROM bookingview WHERE RestaurantId = @RestaurantId;", new { RestaurantId = restaurantId });
+        return await bookings;
     }
 
     public void Delete(int id)

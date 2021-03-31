@@ -36,18 +36,12 @@ using System.ComponentModel.DataAnnotations;
         public string PhotoURL { get; set; }
 
         [Required]
+        public string AdditionalInfo { get; set; }
+
+        [Required]
+        public string Cuisine { get; set; }
+
+        [Required]
         public int Capacity { get; set; }
-
-        [Required]
-        public int Tables2 { get; set; }
-
-        [Required]
-        public int Tables4 { get; set; }
-
-        [Required]
-        public int Tables6 { get; set; }
-
-        [Required]
-        public int Tables8 { get; set; }
 
     }
