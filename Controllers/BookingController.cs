@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 using Microsoft.AspNetCore.Http;
 
     [ApiController]
-    [Route("bookings")]
+    [Route("[controller]s")]
     public class BookingController : ControllerBase
     {
        private readonly IRepositoryB<Booking> _bookingRepository;

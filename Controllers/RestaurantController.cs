@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 using Microsoft.AspNetCore.Http;
 
     [ApiController]
-    [Route("restaurants")]
+    [Route("[controller]s")]
     public class RestaurantController : ControllerBase
     {
        private readonly IRepository<Restaurant> _restaurantRepository;
@@ -76,13 +76,17 @@ using Microsoft.AspNetCore.Http;
     [HttpPost]
     public async Task<IActionResult> Insert([FromBody] Restaurant restaurant)    
     {
-       
-        if(!ModelState.IsValid){
-            return BadRequest(ModelState);
+        try 
+        {
+           var newRestaurant = await _restaurantRepository.Insert(restaurant);
+            return Created($"/restaurants/{restaurant.Id}", newRestaurant);
+    
         }
-
-        var newRestaurant = await _restaurantRepository.Insert(restaurant);
-        return Created($"/restaurants/{restaurant.Id}", newRestaurant);
+        catch (Exception) 
+        {         
+            return BadRequest();
+        }
+    
     }
 }
 
