@@ -1,10 +1,10 @@
 CREATE TABLE bookingview (
 BookingId SERIAL PRIMARY KEY,
-RestaurantId INTEGER REFERENCES restaurant_capacity_view (Id),
+RestaurantId INTEGER REFERENCES restaurantview (Id),
 CustomerName TEXT,
 BookingDate VARCHAR,
 BookingTime VARCHAR,
 NumberOfPeople NUMERIC,
 CustomerMobile VARCHAR ,
-CustomerEmail VARCHAR,
+CustomerEmail VARCHAR
 );

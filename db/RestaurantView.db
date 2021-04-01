@@ -1,21 +1,22 @@
-CREATE TABLE restaurant_capacity_view (
+CREATE TABLE restaurantview (
     Id SERIAL PRIMARY KEY,
-    RestaurantName TEXT,
-    Description TEXT,
-    OpeningTimes VARCHAR,
-    ClosingTimes VARCHAR,
-    PhoneNumber NUMERIC,
-    AddressLine1 VARCHAR,
-    Area TEXT,
-    Postcode VARCHAR,
-    WebsiteURL TEXT,
-    PhotoURl TEXT,
-    AdditionalInfo TEXT,
-    Cuisine TEXT,
-    Capacity NUMERIC
+    RestaurantName TEXT NOT NULL,
+    Description TEXT NOT NULL,
+    OpeningTimes VARCHAR NOT NULL,
+    ClosingTimes VARCHAR NOT NULL,
+    PhoneNumber VARCHAR NOT NULL,
+    AddressLine1 VARCHAR NOT NULL,
+    Area TEXT NOT NULL,
+    Postcode VARCHAR NOT NULL,
+    WebsiteURL TEXT NOT NULL,
+    PhotoURl TEXT NOT NULL,
+    AdditionalInfo TEXT NOT NULL,
+    Cuisine TEXT NOT NULL,
+    Capacity NUMERIC NOT NULL,
+    RestaurantToken VARCHAR
 );
 
-INSERT INTO restaurant_capacity_view (
+INSERT INTO restaurantview (
     RestaurantName,
     Description,
     OpeningTimes ,
@@ -25,13 +26,11 @@ INSERT INTO restaurant_capacity_view (
     Area,
     Postcode ,
     WebsiteURL,
-    PhotoURl,
+    PhotoURL,
     AdditionalInfo,
+    Cuisine,
     Capacity,
-    Tables2,
-    Tables4,
-    Tables6,
-    Tables8) 
+    RestaurantToken,
     VALUES 
     ('Rudy\'s Neopolitan Pizza', 'Authentic Neopolitan Pizza, the best in Birmingham.', '1700', '2300', 1213145580, 'Sun House, Bennetts Hill', 'Birmingham', 'B2 5RS', 'www.rudyspizza.co.uk', 'https://source.unsplash.com/random', 'Vegan options available. Call for more details.', 'Italy', 160),
 ('The Boars Head', 'The Boars Head brings food from around the world to the West Midlands. Prepare or the single most fantastic dining experience under one roof. Choose extensively from a lavish buffet of both Vegetarian and Non-Vegetarian dishes prepared freshly each day or perhaps have selected dishes personally cooked for you on our live cooking counters.',	'1700',	'2100',	01213569859,	'340 Aldridge Road',	'Birmingham',	'B44 8BH',	'www.boarsheadworldbuffet.co.uk',	'https://final-project-hand.s3.eu-west-3.amazonaws.com/3.jpg',	'Vegetarian/Jain/Vegan/Halal catered for. Call us for more information.', 'Surprise', 150),('Five Rivers',	'The Ultimate FIne Dining Experience. Be inpsired by our distinctive style, ultra-modern, and superb Asian cuisine. We will treat you with a meals that are not only delicious but also rich in history and culture. Enjoy the royal flavours that were once enjoyed by the Maharaja\'s of the Indian Subcontinent.',	'1600',	'2330',	01922646164,	'1 Vicarage Place',	'Walsall',	'WS1 3NA',	'www.fiveriversalacarte.co.uk',	'https://final-project-hand.s3.eu-west-3.amazonaws.com/4.jpg',	'We can cater for all your dietary needs. Please call to discuss.', 'India',	150),
