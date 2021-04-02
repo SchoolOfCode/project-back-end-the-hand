@@ -37,7 +37,7 @@ public class RestaurantRepository : BaseRepository, IRepository<Restaurant>
     public async Task<Restaurant> Update(Restaurant restaurant)
     {
         using var connection = CreateConnection();
-        return await connection.QuerySingleAsync<Restaurant>("UPDATE restaurantview SET RestaurantName = @RestaurantName, Description = @Description, OpeningTimes = @OpeningTimes, ClosingTimes = @ClosingTimes, PhoneNumber = @PhoneNumber, AddressLine1 = @AddressLine1, Area = @Area, Postcode =@Postcode, WebsiteURL =@WebsiteURL, PhotoURL = @PhotoURL, AdditionalInfo =@AdditionalInfo, Cuisine =@Cuisine, Capacity =@Capacity RestaurantToken =@RestaurantToken WHERE Id = @Id RETURNING *;", restaurant);
+        return await connection.QuerySingleAsync<Restaurant>("UPDATE restaurantview SET RestaurantName = @RestaurantName, Description = @Description, OpeningTimes = @OpeningTimes, ClosingTimes = @ClosingTimes, PhoneNumber = @PhoneNumber, AddressLine1 = @AddressLine1, Area = @Area, Postcode =@Postcode, WebsiteURL =@WebsiteURL, PhotoURL = @PhotoURL, AdditionalInfo =@AdditionalInfo, Cuisine =@Cuisine, Capacity =@Capacity, RestaurantToken =@RestaurantToken WHERE Id = @Id RETURNING *;", restaurant);
     }
 
     public async Task<Restaurant> Insert(Restaurant restaurant)
