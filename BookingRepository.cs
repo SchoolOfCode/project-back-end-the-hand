@@ -22,6 +22,13 @@ public class BookingRepository : BaseRepository, IRepositoryB<Booking>
         return await bookings;
     }
 
+    public async Task<IEnumerable<Booking>> GetByRestaurantToken(string token)
+    {
+        using var connection = CreateConnection();
+        Task<IEnumerable<Booking>> bookings = connection.QueryAsync<Booking>("SELECT BookingId, RestaurantId, CustomerName, BookingDate, BookingTime, NumberOfPeople, CustomerMobile, CustomerEmail FROM BookingView INNER JOIN RestaurantView ON RestaurantId=Id WHERE RestaurantToken ILIKE @RestaurantToken", new { RestaurantToken = $"{token}" });
+        return await bookings;
+    }
+
     public async Task<IEnumerable<Booking>> GetByRestaurant(int restaurantId)
     {
         using var connection = CreateConnection();

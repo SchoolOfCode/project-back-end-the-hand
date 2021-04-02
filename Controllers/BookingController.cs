@@ -18,10 +18,32 @@ using Microsoft.AspNetCore.Http;
         }
     
     //get bookings by restaurant id and date - working
+    // [HttpGet]
+    // public async Task<IActionResult> GetAll([FromQuery] int restaurantId, string date)
+    //     {
+    //         if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date)){
+    //             try {
+    //                 var bookingList = await _bookingRepository.GetByRestaurantAndDate(restaurantId, date);
+    //                 return Ok(bookingList);
+    //             }
+    //             catch (Exception){
+    //                 return NotFound($"There are no bookings for restaurant {restaurantId} for the date {date}");
+    //             }
+    //         } else {
+    //             try {
+    //                 var bookingList = await _bookingRepository.GetAll();
+    //                 return Ok(bookingList);
+    //             }
+    //             catch (Exception){
+    //                 return NotFound($"There are no bookings listed");
+    //             }
+    //         }
+    //     }
+
     [HttpGet]
-    public async Task<IActionResult> GetAll([FromQuery] int restaurantId, string date)
+    public async Task<IActionResult> GetRestaurantBookings([FromQuery] int restaurantId, string date, string token)
         {
-            if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date)){
+            if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date) && String.IsNullOrEmpty(token)){
                 try {
                     var bookingList = await _bookingRepository.GetByRestaurantAndDate(restaurantId, date);
                     return Ok(bookingList);
@@ -31,11 +53,11 @@ using Microsoft.AspNetCore.Http;
                 }
             } else {
                 try {
-                    var bookingList = await _bookingRepository.GetAll();
+                    var bookingList = await _bookingRepository.GetByRestaurantToken(token);
                     return Ok(bookingList);
                 }
                 catch (Exception){
-                    return NotFound($"There are no bookings listed");
+                    return NotFound($"There are currently no bookings for this restaurant");
                 }
             }
         }
