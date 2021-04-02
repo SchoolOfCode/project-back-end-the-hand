@@ -1,0 +1,17 @@
+CREATE TABLE restaurantview (
+    Id SERIAL PRIMARY KEY,
+    RestaurantName TEXT NOT NULL,
+    Description TEXT NOT NULL,
+    OpeningTimes VARCHAR NOT NULL,
+    ClosingTimes VARCHAR NOT NULL,
+    PhoneNumber VARCHAR NOT NULL,
+    AddressLine1 VARCHAR NOT NULL,
+    Area TEXT NOT NULL,
+    Postcode VARCHAR NOT NULL,
+    WebsiteURL TEXT NOT NULL,
+    PhotoURl TEXT NOT NULL,
+    AdditionalInfo TEXT NOT NULL,
+    Cuisine TEXT NOT NULL,
+    Capacity NUMERIC NOT NULL,
+    RestaurantToken VARCHAR
+);
