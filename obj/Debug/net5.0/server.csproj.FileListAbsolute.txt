@@ -29,3 +29,14 @@ D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\server
 D:\github.com\OanaMG\School of Code\final_project\server\obj\Debug\net5.0\server.genruntimeconfig.cache
 D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Dapper.dll
 D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Npgsql.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.DotNet.InternalAbstractions.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.Extensions.PlatformAbstractions.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Newtonsoft.Json.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Twilio.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Twilio.AspNet.Common.dll
+D:\github.com\OanaMG\School of Code\final_project\server\bin\Debug\net5.0\Twilio.AspNet.Core.dll
