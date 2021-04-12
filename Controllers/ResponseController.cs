@@ -18,11 +18,16 @@ using Microsoft.Extensions.Configuration;
     {
         IConfiguration _configuration;
 
+        public ResponseController (IConfiguration configuration)
+        {
+        _configuration = configuration;
+        }
+
         [HttpGet]
         public IActionResult Get([FromQuery] string messageBody, string mobile)
         {
             // Initialize twilio client
-            TwilioClient.Init("AC56b6be20a25f4637181b1cf585e25875","3f113dd9ca21d7140b8cd5e9585cd9b6");
+            TwilioClient.Init(_configuration["TWILIOID"],_configuration["TWILIOTOKEN"]); 
 
             var response = MessageResource.Create(
             body: $"{messageBody}",from: new Twilio.Types.PhoneNumber("+447782623184"), to: new Twilio.Types.PhoneNumber($"{mobile}"));
