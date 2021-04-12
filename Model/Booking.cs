@@ -21,8 +21,8 @@ using System.ComponentModel.DataAnnotations;
         public int NumberOfPeople { get; set; }
 
         [Required]
-        public string CustomerMobile { get; set; }        // !!!!!! Need to check what the number format should be and how validation would work
-
+        public string CustomerMobile { get; set; }        
+        
         [Required]
         public string CustomerEmail { get; set; }
 
