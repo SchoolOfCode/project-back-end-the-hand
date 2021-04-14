@@ -18,7 +18,6 @@ using System.Threading.Tasks;
     [HttpGet]
     public async Task<IActionResult> GetAllByRestaurant([FromQuery] int restaurantId, string date)
         {
-            // if (!String.IsNullOrEmpty(search) && !String.IsNullOrEmpty((id.ToString()))){
                 try {
                     var slotList = await _timeslotRepository.GetBookedSlotsByDay(restaurantId, date);
                     return Ok(slotList);
