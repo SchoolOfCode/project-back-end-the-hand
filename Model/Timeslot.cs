@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-    public class TimeSlotOccupancy
+    public class Timeslot
     {
         [Required]
         public string TimeSlot { get; set; }

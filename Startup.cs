@@ -27,7 +27,7 @@ using Microsoft.OpenApi.Models;
         {
             services.AddTransient<IRepository<Restaurant>, RestaurantRepository>();
             services.AddTransient<IRepositoryB<Booking>, BookingRepository>();
-            services.AddTransient<IRepositoryT<TimeSlotOccupancy>, TimeSlotOccupancyRepository>();
+            services.AddTransient<IRepositoryT<Timeslot>, TimeslotRepository>();
 
             services.AddControllers();
             services.AddSwaggerGen(c =>

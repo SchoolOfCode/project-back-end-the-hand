@@ -2,9 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using System.Web;
-using System.Collections.Specialized;
-using Microsoft.AspNetCore.Http;
 
     [ApiController]
     [Route("[controller]s")]
@@ -16,32 +13,9 @@ using Microsoft.AspNetCore.Http;
         {
             _bookingRepository = bookingRepository;
         }
-    
-    //get bookings by restaurant id and date - working
-    // [HttpGet]
-    // public async Task<IActionResult> GetAll([FromQuery] int restaurantId, string date)
-    //     {
-    //         if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date)){
-    //             try {
-    //                 var bookingList = await _bookingRepository.GetByRestaurantAndDate(restaurantId, date);
-    //                 return Ok(bookingList);
-    //             }
-    //             catch (Exception){
-    //                 return NotFound($"There are no bookings for restaurant {restaurantId} for the date {date}");
-    //             }
-    //         } else {
-    //             try {
-    //                 var bookingList = await _bookingRepository.GetAll();
-    //                 return Ok(bookingList);
-    //             }
-    //             catch (Exception){
-    //                 return NotFound($"There are no bookings listed");
-    //             }
-    //         }
-    //     }
 
     [HttpGet]
-    public async Task<IActionResult> GetRestaurantBookings([FromQuery] int restaurantId, string date, string token)
+    public async Task<IActionResult> GetAll([FromQuery] int restaurantId, string date, string token)
         {
             if ((!String.IsNullOrEmpty(restaurantId.ToString())) && !String.IsNullOrEmpty(date) && String.IsNullOrEmpty(token)){
                 try {
@@ -62,8 +36,7 @@ using Microsoft.AspNetCore.Http;
             }
         }
 
-    //get bookings by restaurant id - working
-    [HttpGet("{id}")]
+    [HttpGet("{id}")]   //get bookings by restaurant id
     public async Task<IActionResult> Get(int id)  
     {
         try {

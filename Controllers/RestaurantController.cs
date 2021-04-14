@@ -1,10 +1,6 @@
-﻿using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using System.Web;
-using System.Collections.Specialized;
-using Microsoft.AspNetCore.Http;
 
     [ApiController]
     [Route("[controller]s")]
@@ -17,7 +13,6 @@ using Microsoft.AspNetCore.Http;
             _restaurantRepository = restaurantRepository;
         }
     
-    //get restaurants by cuisine - working
     [HttpGet]
     public async Task<IActionResult> GetAll([FromQuery] string cuisine)
         {
@@ -40,7 +35,6 @@ using Microsoft.AspNetCore.Http;
             }
         }
 
-    //get restaurant by id - working
     [HttpGet("{id}")]
     public async Task<IActionResult> Get(int id)  
     {

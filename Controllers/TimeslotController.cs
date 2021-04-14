@@ -2,29 +2,25 @@
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
-using System.Web;
-using System.Collections.Specialized;
-using Microsoft.AspNetCore.Http;
 
     [ApiController]
-    [Route("timeslots")]
-    public class TimeSlotOccupancyController : ControllerBase
+    [Route("[controller]s")]
+    public class TimeslotController : ControllerBase
     {
-       private readonly IRepositoryT<TimeSlotOccupancy> _timeSlotOccupancyRepository;
+       private readonly IRepositoryT<Timeslot> _timeslotRepository;
 
-        public TimeSlotOccupancyController(IRepositoryT<TimeSlotOccupancy> timeSlotOccupancyRepository)
+        public TimeslotController(IRepositoryT<Timeslot> timeslotRepository)
         {
-            _timeSlotOccupancyRepository = timeSlotOccupancyRepository;
+            _timeslotRepository = timeslotRepository;
         }
     
 
-    //working
     [HttpGet]
     public async Task<IActionResult> GetAllByRestaurant([FromQuery] int restaurantId, string date)
         {
             // if (!String.IsNullOrEmpty(search) && !String.IsNullOrEmpty((id.ToString()))){
                 try {
-                    var slotList = await _timeSlotOccupancyRepository.GetBookedSlotsByDay(restaurantId, date);
+                    var slotList = await _timeslotRepository.GetBookedSlotsByDay(restaurantId, date);
                     return Ok(slotList);
                 }
                 catch (Exception){
